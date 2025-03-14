@@ -1,5 +1,4 @@
 import Sheet
-import Minstrel
 import BuildACharacter as bac
 import tkinter as tk
 
@@ -55,13 +54,6 @@ quit_button.place(relx = 0.5,rely = 0.8,anchor = tk.CENTER)
 make_button = tk.Button(root,text = 'New Character',width = 14,height = 2,
                         command = call_new)
 make_button.place(relx = 0.8,rely = 0.2,anchor = tk.CENTER)
-
-
-#Note: Utilizes a while loop so
-#locks out the rest of the program while it runs
-minst_button = tk.Button(root,text = 'Minstrel',width = 14,height = 2,
-                         command = Minstrel.main)
-minst_button.place(relx = 0.2,rely = 0.2,anchor = tk.CENTER)
 
 character0 = tk.Button(root,text = sheets[0],width = 20,height = 10,
                        command = call_first)
