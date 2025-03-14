@@ -1,0 +1,48 @@
+name[yourname]
+class_level[yourclass,yourlevel]
+background[yourbackground]
+race[yourrace]
+alignment[youralignment]
+xp_points[0]
+
+personality[Your personality is supposed to be a paragraph. You can enter
+
+new lines, just whatever you do, do not enter Square Brackets. Those are for data formatting only.]
+ideals[Same as before, but enter your ideals. Just follow the rules.]
+bonds[Your bonds go here.]
+flaws[Your flaws go here.]
+
+html_file[yourhtmlfileaddress]
+
+strength[str,str_mod]
+dexterity[dex,dex_mod]
+constitution[const,const_mod]
+intelligence[intel,intel_mod]
+wisdom[wisdom,wisdom_mod]
+charisma[charisma,charisma_mod]
+
+inspiration[yourinspiration]
+prof_bonus[yourproficiencybonus]
+
+saving_throws[st1,st2,st3]
+skills[sk1,sk2,sk3]
+skills_other[os1,os2,os3]
+
+armor_class[yourarmorclass]
+initiative[yourinitiative]
+speed[yourspeed]
+
+hp[yourhp]
+hp_max[yourmaxhp]
+hp_temp[yourtemphp]
+
+hit_dice[yourhitdice]
+
+weapons[weapon1,atkbonus1,die1|weapon2,atkbonus2,die2]
+
+money[yourmoney]
+
+inventory_nums = [itemquant,itemname|itemquant2,itemname2]
+
+
+
