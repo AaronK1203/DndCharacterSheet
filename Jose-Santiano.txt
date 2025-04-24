@@ -1,0 +1,238 @@
+name[Jose Santiano]
+class_level[Ranger V]
+background[Sailor]
+race[Human]
+alignment[____]
+xp_points[0]
+
+personality[Alcoholic :), Sailor, Street Smarts, Navigator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+ideals[Anti-Archipelagos Empire, Freedom, Anarchy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+bonds[Escape the Cruel Wars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+flaws[Alcoholic :(, No School Smarts, Distrustful, 
+Has Imposter Syndrome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+
+features_traits[-Favorite Enemies: Humans and Elves.
+-Favorite Terrain: Coastline.
+-Bad Reputation in Archipelagos Empire.
+-Hunter Subclass - Colossus Slayer: Xtra 1d8 dmg 
+to Targets below Max HP
+
+-Archery
+
+-Ability: Summon Rat: if you roll a Rat20 (exact or 
+dirty), a 25hp Giant Rat appears. It will attack 
+the closest target. (Once per combat)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+
+html_file[Jose-Santiano.html]
+
+strength[12,1]
+dexterity[17,3]
+constitution[15,2]
+intelligence[10,0]
+wisdom[13,1]
+charisma[16,3]
+
+wisdom_pass[12]
+inspiration[0]
+prof_bonus[3]
+
+saving_throws[STRENGTH,DEXTERITY]
+skills[Athletics,Perception,Stealth,Survival]
+skills_other[Light/Medium Arms, Simple Martial Weapons, 
+Navigation, Watercraft: Cannons
++3 for Rat Rolls
+
+Languages: Common
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+
+armor_class[16]
+initiative[1]
+speed[30]
+
+hp[53]
+hp_max[53]
+hp_temp[500]
+
+hit_dice[1d10]
+
+weapons[Silver Cutlass (Str),+5,1d6-Slash|Longbow (Dex),+5,1d8-Piercing(120ft)|Dagger (Str/Dex),+5,1d4-Piercing|5 Daggers,+5,1d4-Piercing|Cutlass (Str),+5,1d6-Slash|Greater Heal,+0,4d4+4-Heal|Silver Longsword,+5,1d8-Slash|Znth. Blunderbuss (Dex),+5,1d12-Piercing(20ft)|Ship Cannon *2,+0 (+prof),4d12-Force(300ft)|Swivel Gun *2,+0,5d6-Force(300ft)|Rattling Gun (Ships),+0,1d20-Rat(yupft)|Lesser Heal,,2d4+2]
+
+money[0, 5, 1, 400, 0]
+
+inventory_nums[47,Torches|88,Arrows|84,Rations|100,ft-Rope|1,Explorer's Pack|1,Dwarf Helmet|1,Longbow|1,Vial Holy Water|1,Short Sword|1,Pirate Coat (Scale Mail)|5,Armor/Cloth Scraps|3,Moonflowers|9,Healer's Kits|1,Fishing Set|1,Whistle|55,Gallons Ale|1,Commercial Fishing Net|3,Pipebombs|1,Buccaneer Hat|99,Bullets|69,Cannonballs|4,Crew Members|39,Rations|18,Ballista Bolts|300,Counterfeit Gold]
+treasure[3 Rings (+Precious), 
+Gilded Circlet, 
+Brass Button, Mayor's Button, 
+1 lb Topaz Ore, 2 Topaz, 
+Leather Tricorn Hat
+Gilded Rat
+Self-Healing Magic Brig, Gilded Order Flag
+Partially Digested Baby Shoe (+3 to Rat Rolls)
+Znth. Core
+Znth. Charge
+
+
+
+
+
+
+]
+
+spellcasting[1]
+
+spell_save[d10]
+
+spell_atk_bonus[2]
+
+cantrips[$
+|$2nd Cantrip|$
+|$|$|$|$|$|$|$]
+
+num_slots[4,2,0,0,0,0,0,0,0]
+
+max_slots[4,2,0,0,0,0,0,0,0]
+
+lvl1_spells[Cure Wounds$Heal Ally Within Melee Range 
+1d8 + Spellcasting Ability
+|Fog Cloud$Create 20 ft Radius Sphere of Fog -> Lasts for 1 hour
+Concentration ST's when you
+take damage
+
+|Hunter's Mark$Mark an enemy within 
+sightlines and 
+1. Deal extra 1d6 dmg 
+2. Roll with advantage to find   a Marked enemy
+
+|$|$|$|$|$|$|$|$|$|$|$]
+
+lvl2_spells[Dark Vision$A creature within arms reach, including yourself, can see inthe dark 60 ft ahead for 8 hrs
+
+|$|$|$|$|$|$|$|$|$|$|$|$]
+
+lvl3_spells[$|$|$|$|$|$|$|$|$|$|$|$|$]
+
+lvl4_spells[$|$|$|$|$|$|$|$|$|$|$|$|$]
+
+lvl5_spells[$|$|$|$|$|$|$|$|$]
+
+lvl6_spells[$|$|$|$|$|$|$|$|$]
+
+lvl7_spells[$|$|$|$|$|$|$|$|$]
+
+lvl8_spells[$|$|$|$|$|$|$]
+
+lvl9_spells[$|$|$|$|$|$|$]

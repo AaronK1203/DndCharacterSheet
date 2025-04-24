@@ -1,0 +1,308 @@
+name[Vedmid]
+class_level[Druid V]
+background[Folk Hero]
+race[Wood Elf]
+alignment[____]
+xp_points[0]
+
+personality[Proud of his people, willing to break tradition to get the job done.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+ideals[Pro-Druid Armament, Is willing to work with metal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+bonds[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+flaws[Hotheaded, will never pass down a fight
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+
+features_traits[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+
+html_file[Vedmid.html]
+
+strength[16,3]
+dexterity[15,2]
+constitution[19,4]
+intelligence[11,0]
+wisdom[16,3]
+charisma[13,1]
+
+wisdom_pass[12]
+inspiration[0]
+prof_bonus[3]
+
+saving_throws[STRENGTH,DEXTERITY]
+skills[Medicine,Nature,Perception]
+skills_other[Light/Medium Armor, Melee Weapons
+Languages: Common, Elvish, Druidic
+Mask of the Wild: You can attempt to hide even in
+light obscurment. (Maybe)
+Wild-Shape: Turn into a common creature for 2 hrs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+
+armor_class[0]
+initiative[1]
+speed[35]
+
+hp[41]
+hp_max[41]
+hp_temp[0]
+
+hit_dice[1d6]
+
+weapons[Scimitar,+5,1d6-Slash (str)|Iron Shield,+0,1d4-Bludg. (str)]
+
+money[0, 0, 0, 0, 0]
+
+inventory_nums[1,Leather Armor]
+treasure[Mysha
+
+]
+
+spellcasting[3 (wis)]
+
+spell_save[d8 + wis]
+
+spell_atk_bonus[5]
+
+cantrips[Druidcraft$Any trap within LOS and within120m can be sensed.
+Does not reveal the location,
+just 1. That there is one, and2. What it is/does. 
+2. 
+ 
+|Produce Flame$Summon a ball of fire in the
+palm of your hand for 10 
+minutes. Allows you to see 10
+meters ahead. You can also 
+throw it for 30 meters for
+1d8-fire
+|Mending$Repair a tear/gash 1 ft in 
+diameter
+
+|$|$|$|$|$|$|$]
+
+num_slots[4,3,2,0,0,0,0,0,0]
+
+max_slots[4,3,2,0,0,0,0,0,0]
+
+lvl1_spells[Healing Word$Heal an ally within 60 ft for
+Ld6 + const 
+(L=level of spellslot)
+|Create/Destroy Water$Create or Destroy L*10 Gallons
+of water within 30 meters
+(L=level of spellslot)
+This water can fall as rain
+in the 30 meter radius.
+
+
+
+
+|Entangle$
+
+
+|Speak with Animals$Speak to Animals for 10 
+minutes. (Short and Sweet)
+
+|$|$|$|$|$|$|$|$|$|$]
+
+lvl2_spells[Spike Growth$Create a 20m radius of spikes
+(difficult terrain) anything 
+traveling through must take
+2d4 piercing damage for every
+5m traveled.
+
+|Flame Blade$Summon fire on your blade,
+deal 3d6 fire damage for 
+10 minutes.
+|Barkskin$A creature within melee range
+gets skin as hard as bark for 1 hr. (AC >= 16)
+
+
+
+
+|$
+|$|$|$|$|$|$|$|$|Find Traps (For l8r)$Any trap within LOS and within120m can be sensed.
+Does not reveal the location,
+just 1. That there is one, and2. What it is/does. 
+]
+
+lvl3_spells[Call Lightning$Make a cylindric storm cloud
+10ft tall and 60m radius. 
+After casting the spell, and
+upon each action for 10mins,
+call lightning with 5m radius.
+Everything hit recieves Ld10 
+dmg (+1d10 in stormy weather)
+(L = level of slot)
+|Speak with Plants$Speak with Plants! They can
+even do favors for you if you
+ask them nicely :)
+|Plant Growth$|$|$|$|$|$|$|$|$|$|$]
+
+lvl4_spells[$|$|$|$|$|$|$|$|$|$|$|$|$]
+
+lvl5_spells[$|$|$|$|$|$|$|$|$]
+
+lvl6_spells[$|$|$|$|$|$|$|$|$]
+
+lvl7_spells[$|$|$|$|$|$|$|$|$]
+
+lvl8_spells[$|$|$|$|$|$|$]
+
+lvl9_spells[$|$|$|$|$|$|$]

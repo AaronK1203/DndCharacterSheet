@@ -48,14 +48,46 @@ def main(file_name):
 
     hit_dice = '1d4'
 
-    weapons = 'None lol'
+    weapons = [['weapon1','atkbonus1','die1'],['weapon2','atkbonus2','die2']]
 
     money = 'None lol'
 
-    inventory_nums = ''
+    inventory_nums = [[0,'itemname'],[0,'itemname2']]
 
     treasure = ''
+
+    spellcasting = 0
+
+    spell_save = 'd10'
+
+    spell_atk_bonus = 0
+
+    cantrips = []
+
+    num_slots = []
     
+    max_slots = []
+
+    lvl1_spells = []
+    
+    lvl2_spells = []
+
+    lvl3_spells = []
+
+    lvl4_spells = []
+
+    lvl5_spells = []
+
+    lvl6_spells = []
+
+    lvl7_spells = []
+
+    lvl8_spells = []
+
+    lvl9_spells = []
+
+    all_spells = [lvl1_spells,lvl2_spells,lvl3_spells,lvl4_spells,lvl5_spells,
+                      lvl6_spells,lvl7_spells,lvl8_spells,lvl9_spells]
     
     character_data = file1.read()
     file1.close()
@@ -120,11 +152,130 @@ def main(file_name):
         inventory_nums = data_at('inventory_nums')
 
         treasure = data_at('treasure')
+
+        spellcasting = data_at('spellcasting')
+
+        spell_save = data_at('spell_save')
+
+        spell_atk_bonus = data_at('spell_atk_bonus')
+
+        cantrips = data_at('cantrips').split('|')
+        for i in range(len(cantrips)):
+            cantrips[i] = cantrips[i].split('$')
+
+        num_slots = data_at('num_slots').split(',')
+
+        max_slots = data_at('max_slots').split(',')
+
+        for i in range(len(num_slots)):
+            num_slots[i] = int(num_slots[i])
+            max_slots[i] = int(max_slots[i])
+
+        lvl1_spells = data_at('lvl1_spells').split('|')
+        for i in range(len(lvl1_spells)):
+            lvl1_spells[i] = lvl1_spells[i].split('$')
+
+        lvl2_spells = data_at('lvl2_spells').split('|')
+        for i in range(len(lvl2_spells)):
+            lvl2_spells[i] = lvl2_spells[i].split('$')
+
+        lvl3_spells = data_at('lvl3_spells').split('|')
+        for i in range(len(lvl3_spells)):
+            lvl3_spells[i] = lvl3_spells[i].split('$')
+
+        lvl4_spells = data_at('lvl4_spells').split('|')
+        for i in range(len(lvl4_spells)):
+            lvl4_spells[i] = lvl4_spells[i].split('$')
+
+        lvl5_spells = data_at('lvl5_spells').split('|')
+        for i in range(len(lvl5_spells)):
+            lvl5_spells[i] = lvl5_spells[i].split('$')
+
+        lvl6_spells = data_at('lvl6_spells').split('|')
+        for i in range(len(lvl6_spells)):
+            lvl6_spells[i] = lvl6_spells[i].split('$')
+
+        lvl7_spells = data_at('lvl7_spells').split('|')
+        for i in range(len(lvl7_spells)):
+            lvl7_spells[i] = lvl7_spells[i].split('$')
+
+        lvl8_spells = data_at('lvl8_spells').split('|')
+        for i in range(len(lvl8_spells)):
+            lvl8_spells[i] = lvl8_spells[i].split('$')
+
+        lvl9_spells = data_at('lvl9_spells').split('|')
+        for i in range(len(lvl9_spells)):
+            lvl9_spells[i] = lvl9_spells[i].split('$')
+            
+        all_spells = [cantrips,lvl1_spells,lvl2_spells,lvl3_spells,lvl4_spells,lvl5_spells,
+                      lvl6_spells,lvl7_spells,lvl8_spells,lvl9_spells]
+        
     except Exception:
         print('Error Fetching Data')
-
+    
     
     def write():
+        nonlocal weapons
+        nonlocal inventory_nums
+        #Format specific data to save to csv
+
+        if weapons == '':
+            weapons = ',,|,,'
+        if inventory_nums == '':
+            inventory_nums = '0,placeholder'
+
+        #Spells
+        cantrips_str = ''
+        for row in cantrips:
+            cantrips_str += row[0] + '$' + row[1] + '|'
+        cantrips_str = cantrips_str[0:len(cantrips_str)-1]
+
+        lvl1_str = ''
+        for row in lvl1_spells:
+            lvl1_str += row[0] + '$' + row[1] + '|'
+        lvl1_str = lvl1_str[0:len(lvl1_str)-1]
+
+        lvl2_str = ''
+        for row in lvl2_spells:
+            lvl2_str += row[0] + '$' + row[1] + '|'
+        lvl2_str = lvl2_str[0:len(lvl2_str)-1]
+
+        lvl3_str = ''
+        for row in lvl3_spells:
+            lvl3_str += row[0] + '$' + row[1] + '|'
+        lvl3_str = lvl3_str[0:len(lvl3_str)-1]
+
+        lvl4_str = ''
+        for row in lvl4_spells:
+            lvl4_str += row[0] + '$' + row[1] + '|'
+        lvl4_str = lvl4_str[0:len(lvl4_str)-1]
+
+        lvl5_str = ''
+        for row in lvl5_spells:
+            lvl5_str += row[0] + '$' + row[1] + '|'
+        lvl5_str = lvl5_str[0:len(lvl5_str)-1]
+
+        lvl6_str = ''
+        for row in lvl6_spells:
+            lvl6_str += row[0] + '$' + row[1] + '|'
+        lvl6_str = lvl6_str[0:len(lvl6_str)-1]
+
+        lvl7_str = ''
+        for row in lvl7_spells:
+            lvl7_str += row[0] + '$' + row[1] + '|'
+        lvl7_str = lvl7_str[0:len(lvl7_str)-1]
+
+        lvl8_str = ''
+        for row in lvl8_spells:
+            lvl8_str += row[0] + '$' + row[1] + '|'
+        lvl8_str = lvl8_str[0:len(lvl8_str)-1]
+
+        lvl9_str = ''
+        for row in lvl9_spells:
+            lvl9_str += row[0] + '$' + row[1] + '|'
+        lvl9_str = lvl9_str[0:len(lvl9_str)-1]
+                
+        
         character_data = f'''name[{name}]
 class_level[{class_level}]
 background[{background}]
@@ -171,8 +322,40 @@ weapons[{weapons}]
 money{money}
 
 inventory_nums[{inventory_nums}]
-treasure[{treasure}]'''
+treasure[{treasure}]
 
+spellcasting[{spellcasting}]
+
+spell_save[{spell_save}]
+
+spell_atk_bonus[{spell_atk_bonus}]
+
+cantrips[{cantrips_str}]
+
+num_slots{str(num_slots).replace(' ','').replace("'",'')}
+
+max_slots{str(max_slots).replace(' ','').replace("'",'')}
+
+lvl1_spells[{lvl1_str}]
+
+lvl2_spells[{lvl2_str}]
+
+lvl3_spells[{lvl3_str}]
+
+lvl4_spells[{lvl4_str}]
+
+lvl5_spells[{lvl5_str}]
+
+lvl6_spells[{lvl6_str}]
+
+lvl7_spells[{lvl7_str}]
+
+lvl8_spells[{lvl8_str}]
+
+lvl9_spells[{lvl9_str}]
+'''
+
+        
         file2 = open(file_name,'w')
         file2.write(character_data)
         file2.close()
@@ -180,7 +363,7 @@ treasure[{treasure}]'''
         
     #For now, just prints the data, but in the future will write to
     #the intended file
-    write()
+    #write()
 
     
     # V V V V V V V GUI STARTS HERE V V V V V V V V    
@@ -188,6 +371,570 @@ treasure[{treasure}]'''
     root.title('D&D Character Sheet')
     root.geometry('1200x950')        
 
+
+    '''Spell Sheet'''
+    #Note: For testing purposes only
+    def print_spells():
+        print('Cantrips:')
+        print(cantrips)
+        print('Slots Available:')
+        print(num_slots)
+        print('Slots Total:')
+        print(max_slots)
+        
+    def open_spells():
+        nonlocal all_spells
+        #Specifies the level being looked at (i)
+        splvl = tk.IntVar()
+        #Specifies the spell in said level (j)
+        splnum = tk.IntVar()
+        #A 3d Array that stores all of the widgets in each frame (For universal reference)
+        spell_widgets = [[[]]]
+
+        #Writes whatever is in the text box to the responding spell's description
+        def set_desc():
+            nonlocal all_spells
+            all_spells[splvl.get()][splnum.get()][1] = description_box.get(1.0,tk.END)
+        #Writes all spell information
+        def set_spells():
+            nonlocal all_spells
+            #All the spell widgets
+            for i in range(len(spell_widgets)):
+                #print(f'Level {i}')
+                #Spell widgets at level i
+                for j in range(len(spell_widgets[i])):
+                    #print(j)
+                    all_spells[i][j][0] = spell_widgets[i][j][0].get()
+        #Writes the description of the spell at (i,j) to the description box
+        def write_desc(i,j):
+           nonlocal all_spells
+           #print(all_spells[i][j][1])
+           splvl.set(i); splnum.set(j)
+           description_box.delete(1.0,tk.END)
+           description_box.insert(1.0,all_spells[i][j][1])
+
+        #Prereq: destination is of type tk.Label
+        def set_num_slots(destination,i,amount):
+            num_slots[i] = amount;
+            if(num_slots[i] > max_slots[i]):
+                num_slots[i] = max_slots[i]
+            elif(num_slots[i] < 0):
+                num_slots[i] = 0
+            destination.config(text = f'Slots: {num_slots[i]}')
+        #Prereq: destination is of type tk.Label
+        def set_max_slots(destination,i,amount):
+            max_slots = amount;
+            if(max_slots[i] < 0):
+                max_slots[i] = 0
+            destination.config(text = f'Max Slots: {max_slots[i]}')
+        
+        spell_level = tk.Toplevel(root)
+        spell_level.geometry('1000x800')
+        spell_level.title('Spell Sheet')
+
+        spellname_canvas = tk.Canvas(spell_level,width = 850,height = 80,bg = 'white')
+        spellname_canvas.create_rectangle(2,2,850,80)
+        spellname_canvas.place(relx = 0.5,rely = 0.0625,anchor = tk.CENTER)
+
+        class_label = tk.Label(spellname_canvas,text = f'Class: {class_level}',width = 15,height = 2,font = ('Ariel',15))
+        class_label.place(relx = 0.2,rely = 0.5,anchor = tk.CENTER)
+
+        spellcasting_label = tk.Label(spellname_canvas,text = f'Spellcasting Ability\n{spellcasting}',width = 15,height = 2,font = ('Ariel',12))
+        spellcasting_label.place(relx = 0.45,rely = 0.5,anchor = tk.CENTER)
+
+        spellsave_label = tk.Label(spellname_canvas,text = f'Spell Save DC\n{spell_save}',width = 15,height = 2,font = ('Ariel',12))
+        spellsave_label.place(relx = 0.65,rely = 0.5,anchor = tk.CENTER)
+
+        spellatk_label = tk.Label(spellname_canvas,text = f'Spell Atk Bonus\n+{spell_atk_bonus}',width = 15,height = 2,font = ('Ariel',12))
+        spellatk_label.place(relx = 0.85,rely = 0.5,anchor = tk.CENTER)
+        
+        '''Beginning of Individual Spell Levels'''
+
+        #Cantrips
+        cantrips_frame = tk.Frame(spell_level,width = 250,height = 150,highlightbackground = 'black',
+                                  highlightthickness = 1)
+        cantrips_frame.place(relx = 0.2,rely = 0.25,anchor = tk.CENTER)
+
+        cantrips_canvas = tk.Canvas(cantrips_frame,width = 250,height = 150,bg = 'white')
+        cantrips_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        cantrips_y_scrollbar = ttk.Scrollbar(cantrips_frame,orient = tk.VERTICAL,command = cantrips_canvas.yview)
+        cantrips_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        cantrips_canvas.configure(yscrollcommand = cantrips_y_scrollbar.set)
+        cantrips_canvas.bind("<Configure>",lambda e: cantrips_canvas.config(scrollregion = cantrips_canvas.bbox(tk.ALL)))
+
+        cantrips_frame2 = tk.Frame(cantrips_canvas,width = 250,height = 150,bg = 'white')
+        
+        cantrips_canvas.create_window((0,0),window = cantrips_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Cantrips').place(relx = 0.2,rely = 0.135,anchor = tk.CENTER)
+
+        for j in range(9):
+            spell_widgets[0][j].append(tk.Entry(cantrips_frame2))
+            spell_widgets[0][j].append(tk.Button(cantrips_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(0,j)))
+            spell_widgets[0][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[0][j][1].grid(row = j,column = 2)
+            spell_widgets[0][j][0].insert(0,cantrips[j][0])
+            if j < 8:
+                spell_widgets[0].append([])
+
+        spell_widgets.append([[]])
+        
+
+        #Lvl 1 Spells
+        spell_1_frame = tk.Frame(spell_level,width = 250,height = 150,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_1_frame.place(relx = 0.2,rely = 0.50,anchor = tk.CENTER)
+
+        spell_1_canvas = tk.Canvas(spell_1_frame,width = 250,height = 150,bg = 'white')
+        spell_1_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_1_y_scrollbar = ttk.Scrollbar(spell_1_frame,orient = tk.VERTICAL,command = spell_1_canvas.yview)
+        spell_1_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_1_canvas.configure(yscrollcommand = spell_1_y_scrollbar.set)
+        spell_1_canvas.bind("<Configure>",lambda e: spell_1_canvas.config(scrollregion = spell_1_canvas.bbox(tk.ALL)))
+
+        spell_1_frame2 = tk.Frame(spell_1_canvas,width = 250,height = 150,bg = 'white')
+        
+        spell_1_canvas.create_window((0,0),window = spell_1_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 1 Spells').place(relx = 0.2,rely = 0.375,anchor = tk.CENTER)
+
+        lvl1_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[0]}')
+        lvl1_maxslots.place(relx = 0.1,rely = 0.375,anchor = tk.CENTER)
+
+        lvl1_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[0]}')
+        lvl1_totalslots.place(relx = 0.3,rely = 0.375,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl1_totalslots,0,num_slots[0]+1)).place(relx = 0.35,rely = 0.375,anchor = tk.CENTER)         
+        for j in range(13):
+            tk.Button(spell_1_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl1_totalslots,0,num_slots[0]-1)).grid(row = j,column = 0)
+            spell_widgets[1][j].append(tk.Entry(spell_1_frame2))
+            spell_widgets[1][j].append(tk.Button(spell_1_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(1,j)))
+            spell_widgets[1][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[1][j][1].grid(row = j,column = 2)
+            spell_widgets[1][j][0].insert(0,lvl1_spells[j][0])
+            if j < 12:
+                spell_widgets[1].append([])
+                                
+        spell_widgets.append([[]])
+
+
+        #Lvl 2 Spells
+
+        spell_2_frame = tk.Frame(spell_level,width = 250,height = 150,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_2_frame.place(relx = 0.2,rely = 0.75,anchor = tk.CENTER)
+
+        spell_2_canvas = tk.Canvas(spell_2_frame,width = 250,height = 150,bg = 'white')
+        spell_2_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_2_y_scrollbar = ttk.Scrollbar(spell_2_frame,orient = tk.VERTICAL,command = spell_2_canvas.yview)
+        spell_2_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_2_canvas.configure(yscrollcommand = spell_2_y_scrollbar.set)
+        spell_2_canvas.bind("<Configure>",lambda e: spell_2_canvas.config(scrollregion = spell_2_canvas.bbox(tk.ALL)))
+
+        spell_2_frame2 = tk.Frame(spell_2_canvas,width = 250,height = 150,bg = 'white')
+        
+        spell_2_canvas.create_window((0,0),window = spell_2_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 2 Spells').place(relx = 0.2,rely = 0.625,anchor = tk.CENTER)
+
+        lvl2_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[1]}')
+        lvl2_maxslots.place(relx = 0.1,rely = 0.625,anchor = tk.CENTER)
+
+        lvl2_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[1]}')
+        lvl2_totalslots.place(relx = 0.3,rely = 0.625,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl2_totalslots,1,num_slots[1]+1)).place(relx = 0.35,rely = 0.625,anchor = tk.CENTER)         
+        for j in range(13):
+            tk.Button(spell_2_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl2_totalslots,1,num_slots[1]-1)).grid(row = j,column = 0)
+            spell_widgets[2][j].append(tk.Entry(spell_2_frame2))
+            spell_widgets[2][j].append(tk.Button(spell_2_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(2,j)))
+            spell_widgets[2][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[2][j][1].grid(row = j,column = 2)
+            spell_widgets[2][j][0].insert(0,lvl2_spells[j][0])
+            if j < 12:
+                spell_widgets[2].append([])
+                                
+        spell_widgets.append([[]])
+
+        #Lvl 3 Spells
+
+        spell_3_frame = tk.Frame(spell_level,width = 250,height = 150,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_3_frame.place(relx = 0.5,rely = 0.25,anchor = tk.CENTER)
+
+        spell_3_canvas = tk.Canvas(spell_3_frame,width = 250,height = 150,bg = 'white')
+        spell_3_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_3_y_scrollbar = ttk.Scrollbar(spell_3_frame,orient = tk.VERTICAL,command = spell_3_canvas.yview)
+        spell_3_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_3_canvas.configure(yscrollcommand = spell_3_y_scrollbar.set)
+        spell_3_canvas.bind("<Configure>",lambda e: spell_3_canvas.config(scrollregion = spell_3_canvas.bbox(tk.ALL)))
+
+        spell_3_frame2 = tk.Frame(spell_3_canvas,width = 250,height = 150,bg = 'white')
+        
+        spell_3_canvas.create_window((0,0),window = spell_3_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 3 Spells').place(relx = 0.5,rely = 0.135,anchor = tk.CENTER)
+
+        lvl3_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[2]}')
+        lvl3_maxslots.place(relx = 0.4,rely = 0.135,anchor = tk.CENTER)
+
+        lvl3_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[2]}')
+        lvl3_totalslots.place(relx = 0.6,rely = 0.135,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl3_totalslots,2,num_slots[2]+1)).place(relx = 0.65,rely = 0.135,anchor = tk.CENTER)         
+        for j in range(13):
+            tk.Button(spell_3_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl3_totalslots,2,num_slots[2]-1)).grid(row = j,column = 0)
+            spell_widgets[3][j].append(tk.Entry(spell_3_frame2))
+            spell_widgets[3][j].append(tk.Button(spell_3_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(3,j)))
+            spell_widgets[3][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[3][j][1].grid(row = j,column = 2)
+            spell_widgets[3][j][0].insert(0,lvl3_spells[j][0])
+            if j < 12:
+                spell_widgets[3].append([])
+                                
+        spell_widgets.append([[]])
+
+        #Lvl 4 Spells
+
+        spell_4_frame = tk.Frame(spell_level,width = 250,height = 150,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_4_frame.place(relx = 0.5,rely = 0.5,anchor = tk.CENTER)
+
+        spell_4_canvas = tk.Canvas(spell_4_frame,width = 250,height = 150,bg = 'white')
+        spell_4_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_4_y_scrollbar = ttk.Scrollbar(spell_4_frame,orient = tk.VERTICAL,command = spell_4_canvas.yview)
+        spell_4_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_4_canvas.configure(yscrollcommand = spell_4_y_scrollbar.set)
+        spell_4_canvas.bind("<Configure>",lambda e: spell_4_canvas.config(scrollregion = spell_4_canvas.bbox(tk.ALL)))
+
+        spell_4_frame2 = tk.Frame(spell_4_canvas,width = 250,height = 150,bg = 'white')
+        
+        spell_4_canvas.create_window((0,0),window = spell_4_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 4 Spells').place(relx = 0.5,rely = 0.375,anchor = tk.CENTER)
+
+        lvl4_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[3]}')
+        lvl4_maxslots.place(relx = 0.4,rely = 0.375,anchor = tk.CENTER)
+
+        lvl4_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[3]}')
+        lvl4_totalslots.place(relx = 0.6,rely = 0.375,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl4_totalslots,3,num_slots[3]+1)).place(relx = 0.65,rely = 0.375,anchor = tk.CENTER)         
+        for j in range(13):
+            tk.Button(spell_4_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl4_totalslots,3,num_slots[3]-1)).grid(row = j,column = 0)
+            spell_widgets[4][j].append(tk.Entry(spell_4_frame2))
+            spell_widgets[4][j].append(tk.Button(spell_4_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(4,j)))
+            spell_widgets[4][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[4][j][1].grid(row = j,column = 2)
+            spell_widgets[4][j][0].insert(0,lvl4_spells[j][0])
+            if j < 12:
+                spell_widgets[4].append([])
+
+        spell_widgets.append([[]])
+                              
+        #Lvl 5 Spells
+
+        spell_5_frame = tk.Frame(spell_level,width = 250,height = 150,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_5_frame.place(relx = 0.5,rely = 0.75,anchor = tk.CENTER)
+
+        spell_5_canvas = tk.Canvas(spell_5_frame,width = 250,height = 150,bg = 'white')
+        spell_5_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_5_y_scrollbar = ttk.Scrollbar(spell_5_frame,orient = tk.VERTICAL,command = spell_5_canvas.yview)
+        spell_5_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_5_canvas.configure(yscrollcommand = spell_5_y_scrollbar.set)
+        spell_5_canvas.bind("<Configure>",lambda e: spell_5_canvas.config(scrollregion = spell_5_canvas.bbox(tk.ALL)))
+
+        spell_5_frame2 = tk.Frame(spell_5_canvas,width = 250,height = 150,bg = 'white')
+        
+        spell_5_canvas.create_window((0,0),window = spell_5_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 5 Spells').place(relx = 0.5,rely = 0.625,anchor = tk.CENTER)
+
+        lvl5_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[4]}')
+        lvl5_maxslots.place(relx = 0.4,rely = 0.625,anchor = tk.CENTER)
+
+        lvl5_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[4]}')
+        lvl5_totalslots.place(relx = 0.6,rely = 0.625,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl5_totalslots,4,num_slots[4]+1)).place(relx = 0.65,rely = 0.625,anchor = tk.CENTER)         
+        for j in range(9):
+            tk.Button(spell_5_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl5_totalslots,4,num_slots[4]-1)).grid(row = j,column = 0)
+            spell_widgets[5][j].append(tk.Entry(spell_5_frame2))
+            spell_widgets[5][j].append(tk.Button(spell_5_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(5,j)))
+            spell_widgets[5][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[5][j][1].grid(row = j,column = 2)
+            spell_widgets[5][j][0].insert(0,lvl5_spells[j][0])
+            if j < 8:
+                spell_widgets[5].append([])
+                                
+        spell_widgets.append([[]])
+
+        #Lvl 6 Spells
+
+        spell_6_frame = tk.Frame(spell_level,width = 250,height = 100,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_6_frame.place(relx = 0.8,rely = 0.225,anchor = tk.CENTER)
+
+        spell_6_canvas = tk.Canvas(spell_6_frame,width = 250,height = 100,bg = 'white')
+        spell_6_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_6_y_scrollbar = ttk.Scrollbar(spell_6_frame,orient = tk.VERTICAL,command = spell_6_canvas.yview)
+        spell_6_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_6_canvas.configure(yscrollcommand = spell_6_y_scrollbar.set)
+        spell_6_canvas.bind("<Configure>",lambda e: spell_6_canvas.config(scrollregion = spell_6_canvas.bbox(tk.ALL)))
+
+        spell_6_frame2 = tk.Frame(spell_6_canvas,width = 250,height = 100,bg = 'white')
+        
+        spell_6_canvas.create_window((0,0),window = spell_6_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 6 Spells').place(relx = 0.8,rely = 0.135,anchor = tk.CENTER)
+
+        lvl6_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[5]}')
+        lvl6_maxslots.place(relx = 0.7,rely = 0.135,anchor = tk.CENTER)
+
+        lvl6_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[5]}')
+        lvl6_totalslots.place(relx = 0.9,rely = 0.135,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl6_totalslots,5,num_slots[5]+1)).place(relx = 0.95,rely = 0.135,anchor = tk.CENTER)         
+        for j in range(9):
+            tk.Button(spell_6_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl6_totalslots,5,num_slots[5]-1)).grid(row = j,column = 0)
+            spell_widgets[6][j].append(tk.Entry(spell_6_frame2))
+            spell_widgets[6][j].append(tk.Button(spell_6_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(6,j)))
+            spell_widgets[6][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[6][j][1].grid(row = j,column = 2)
+            spell_widgets[6][j][0].insert(0,lvl6_spells[j][0])
+            if j < 8:
+                spell_widgets[6].append([])
+                                
+        spell_widgets.append([[]])
+
+        #Lvl 7 Spells
+
+        spell_7_frame = tk.Frame(spell_level,width = 250,height = 100,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_7_frame.place(relx = 0.8,rely = 0.4,anchor = tk.CENTER)
+
+        spell_7_canvas = tk.Canvas(spell_7_frame,width = 250,height = 100,bg = 'white')
+        spell_7_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_7_y_scrollbar = ttk.Scrollbar(spell_7_frame,orient = tk.VERTICAL,command = spell_7_canvas.yview)
+        spell_7_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_7_canvas.configure(yscrollcommand = spell_7_y_scrollbar.set)
+        spell_7_canvas.bind("<Configure>",lambda e: spell_7_canvas.config(scrollregion = spell_7_canvas.bbox(tk.ALL)))
+
+        spell_7_frame2 = tk.Frame(spell_7_canvas,width = 250,height = 100,bg = 'white')
+        
+        spell_7_canvas.create_window((0,0),window = spell_7_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 7 Spells').place(relx = 0.8,rely = 0.31,anchor = tk.CENTER)
+
+        lvl7_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[6]}')
+        lvl7_maxslots.place(relx = 0.7,rely = 0.31,anchor = tk.CENTER)
+
+        lvl7_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[6]}')
+        lvl7_totalslots.place(relx = 0.9,rely = 0.31,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl7_totalslots,6,num_slots[6]+1)).place(relx = 0.95,rely = 0.31,anchor = tk.CENTER)         
+        for j in range(9):
+            tk.Button(spell_7_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl7_totalslots,6,num_slots[6]-1)).grid(row = j,column = 0)
+            spell_widgets[7][j].append(tk.Entry(spell_7_frame2))
+            spell_widgets[7][j].append(tk.Button(spell_7_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(7,j)))
+            spell_widgets[7][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[7][j][1].grid(row = j,column = 2)
+            spell_widgets[7][j][0].insert(0,lvl7_spells[j][0])
+            if j < 8:
+                spell_widgets[7].append([])
+                                
+        spell_widgets.append([[]])
+
+        #Lvl 8 Spells
+
+        spell_8_frame = tk.Frame(spell_level,width = 250,height = 100,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_8_frame.place(relx = 0.8,rely = 0.575,anchor = tk.CENTER)
+
+        spell_8_canvas = tk.Canvas(spell_8_frame,width = 250,height = 100,bg = 'white')
+        spell_8_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_8_y_scrollbar = ttk.Scrollbar(spell_8_frame,orient = tk.VERTICAL,command = spell_8_canvas.yview)
+        spell_8_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_8_canvas.configure(yscrollcommand = spell_8_y_scrollbar.set)
+        spell_8_canvas.bind("<Configure>",lambda e: spell_8_canvas.config(scrollregion = spell_8_canvas.bbox(tk.ALL)))
+
+        spell_8_frame2 = tk.Frame(spell_8_canvas,width = 250,height = 100,bg = 'white')
+        
+        spell_8_canvas.create_window((0,0),window = spell_8_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 8 Spells').place(relx = 0.8,rely = 0.485,anchor = tk.CENTER)
+
+        lvl8_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[7]}')
+        lvl8_maxslots.place(relx = 0.7,rely = 0.485,anchor = tk.CENTER)
+
+        lvl8_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[7]}')
+        lvl8_totalslots.place(relx = 0.9,rely = 0.485,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl8_totalslots,7,num_slots[7]+1)).place(relx = 0.95,rely = 0.485,anchor = tk.CENTER)         
+        for j in range(7):
+            tk.Button(spell_8_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl8_totalslots,7,num_slots[7]-1)).grid(row = j,column = 0)
+            spell_widgets[8][j].append(tk.Entry(spell_8_frame2))
+            spell_widgets[8][j].append(tk.Button(spell_8_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(8,j)))
+            spell_widgets[8][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[8][j][1].grid(row = j,column = 2)
+            spell_widgets[8][j][0].insert(0,lvl8_spells[j][0])
+            if j < 6:
+                spell_widgets[8].append([])
+                                
+        spell_widgets.append([[]])
+
+        #Lvl 9 Spells
+
+        spell_9_frame = tk.Frame(spell_level,width = 250,height = 100,highlightbackground = 'black',
+                          highlightthickness = 1)
+        spell_9_frame.place(relx = 0.8,rely = 0.750,anchor = tk.CENTER)
+
+        spell_9_canvas = tk.Canvas(spell_9_frame,width = 250,height = 100,bg = 'white')
+        spell_9_canvas.pack(side = tk.LEFT,fill = tk.BOTH,expand = 0)
+
+        spell_9_y_scrollbar = ttk.Scrollbar(spell_9_frame,orient = tk.VERTICAL,command = spell_9_canvas.yview)
+        spell_9_y_scrollbar.pack(side = tk.RIGHT,fill = tk.Y)
+
+        spell_9_canvas.configure(yscrollcommand = spell_9_y_scrollbar.set)
+        spell_9_canvas.bind("<Configure>",lambda e: spell_9_canvas.config(scrollregion = spell_9_canvas.bbox(tk.ALL)))
+
+        spell_9_frame2 = tk.Frame(spell_9_canvas,width = 250,height = 100,bg = 'white')
+        
+        spell_9_canvas.create_window((0,0),window = spell_9_frame2,anchor = tk.NW)
+
+        tk.Label(spell_level,text = 'Level 9 Spells').place(relx = 0.8,rely = 0.66,anchor = tk.CENTER)
+
+        lvl9_maxslots = tk.Label(spell_level,text = f'Max Slots: {max_slots[8]}')
+        lvl9_maxslots.place(relx = 0.7,rely = 0.66,anchor = tk.CENTER)
+
+        lvl9_totalslots = tk.Label(spell_level,text = f'Slots: {num_slots[8]}')
+        lvl9_totalslots.place(relx = 0.9,rely = 0.66,anchor = tk.CENTER)
+
+        tk.Button(spell_level,text = '+',width = 2,command = lambda: set_num_slots(lvl9_totalslots,8,num_slots[8]+1)).place(relx = 0.95,rely = 0.66,anchor = tk.CENTER)         
+        for j in range(7):
+            tk.Button(spell_9_frame2,text = '-',width = 2,command = lambda: set_num_slots(lvl9_totalslots,8,num_slots[8]-1)).grid(row = j,column = 0)
+            spell_widgets[9][j].append(tk.Entry(spell_9_frame2))
+            spell_widgets[9][j].append(tk.Button(spell_9_frame2,text = 'Desc',width = 6,height = 1,command = lambda j=j: write_desc(9,j)))
+            spell_widgets[9][j][0].grid(row = j,column = 1,padx = 2,pady = 1)
+            spell_widgets[9][j][1].grid(row = j,column = 2)
+            spell_widgets[9][j][0].insert(0,lvl9_spells[j][0])
+            if j < 6:
+                spell_widgets[9].append([])
+                                
+
+        maxlevel_labels = [lvl1_maxslots,lvl2_maxslots,lvl3_maxslots,lvl4_maxslots,lvl5_maxslots,lvl6_maxslots,lvl7_maxslots,lvl8_maxslots,lvl9_maxslots]
+
+
+        '''End of Individual Spell Levels'''
+
+        def spell_options():
+            nonlocal max_slots
+            spellops_level = tk.Toplevel(spell_level)
+            spellops_level.title('Spell Options')
+            spellops_level.geometry('600x500')
+
+            
+            maxslot_entries = []
+
+            def set_all():
+                nonlocal spellcasting
+                nonlocal spell_save
+                nonlocal spell_atk_bonus
+                spellcasting = spellcasting_entry.get()
+                spell_save = spellsave_entry.get()
+                spell_atk_bonus = spellatkbonus_entry.get()
+
+                spellcasting_label.config(text = f'Spellcasting Ability\n{spellcasting}')
+                spellsave_label.config(text = f'Spell Save DC\n{spell_save}')
+                spellatk_label.config(text = f'Spell Atk Bonus\n+{spell_atk_bonus}')
+
+                try:
+                    for i in range(len(maxslot_entries)):
+                        max_slots[i] = int(maxslot_entries[i].get())
+                        maxlevel_labels[i].config(text = f'Max Slots: {max_slots[i]}')
+                except Exception:
+                    pass
+
+            tk.Label(spellops_level,text = 'Spellcasting').place(relx = 0.25,rely = 0.2,anchor = tk.CENTER)
+            spellcasting_entry = tk.Entry(spellops_level)
+            spellcasting_entry.place(relx = 0.25,rely = 0.25,anchor = tk.CENTER)
+            spellcasting_entry.insert(0,spellcasting)
+
+            tk.Label(spellops_level,text = 'Spell Save DC').place(relx = 0.25,rely = 0.45,anchor = tk.CENTER)
+            spellsave_entry = tk.Entry(spellops_level)
+            spellsave_entry.place(relx = 0.25,rely = 0.5,anchor = tk.CENTER)
+            spellsave_entry.insert(0,spell_save)
+
+            tk.Label(spellops_level,text = 'Spell Attack Bonus').place(relx = 0.25,rely = 0.7,anchor = tk.CENTER)
+            spellatkbonus_entry = tk.Entry(spellops_level)
+            spellatkbonus_entry.place(relx = 0.25,rely = 0.75,anchor = tk.CENTER)
+            spellatkbonus_entry.insert(0,spell_atk_bonus)
+
+            tk.Label(spellops_level,text = 'Max Slots Per Level').place(relx = 0.75,rely = 0.05,anchor = tk.CENTER)
+            
+            j = 0
+            for i in range(9):
+                j+=0.085
+                tk.Label(spellops_level,text = f'Lvl {i+1}').place(relx = 0.705,rely = j,anchor = tk.CENTER)
+                maxslot_entries.append(tk.Entry(spellops_level,width = 5))
+                maxslot_entries[i].insert(0,max_slots[i])
+                maxslot_entries[i].place(relx = 0.795,rely = j,anchor = tk.CENTER)
+                
+
+            setall_button = tk.Button(spellops_level,text = 'Set Values',width = 10,command = set_all)
+            setall_button.place(relx = 0.5,rely = 0.875,anchor = tk.CENTER)
+            
+            done_button = tk.Button(spellops_level,text = 'Done',width = 10,command = spellops_level.destroy)
+            done_button.place(relx = 0.5,rely = 0.95,anchor = tk.CENTER)
+            
+        
+        description_box = tk.Text(spell_level,width = 30,height = 5)
+        description_box.place(relx = 0.75,rely = 0.975,anchor = tk.S)
+
+        set_desc_button = tk.Button(spell_level,text = 'Set Desc',
+                                    width = 6,height = 1,command = set_desc)
+        set_desc_button.place(relx = 0.925,rely = 0.925,anchor = tk.CENTER)
+
+        set_button = tk.Button(spell_level,text = 'Set Spells',width = 10,command = set_spells)
+        set_button.place(relx = 0.5,rely = 0.925,anchor = tk.S)
+
+        spelloptions_button = tk.Button(spell_level,text = 'Options',width = 8,height = 3,command = spell_options)
+        spelloptions_button.place(relx = 0.25,rely = 0.925,anchor = tk.CENTER)
+        
+        close_button = tk.Button(spell_level,text = 'Close',width = 10,height = 1,command = spell_level.destroy)
+        close_button.place(relx = 0.5,rely = 0.975,anchor = tk.S)
+
+        spell_level.mainloop()             
+
+
+    spell_button = tk.Button(root,text = 'Spell Sheet',width = 14,height = 6,command = open_spells)
+    spell_button.place(relx = 0.9,rely = 0.075,anchor = tk.CENTER)
+    
+    #Reference
+    #dice_button = tk.Button(root,text = 'Dice Board',width = 14,height = 6,command = dice_board)
+    #dice_button.place(relx = 0.1,rely = 0.075,anchor = tk.CENTER)
+    '''End of Spell Sheet'''
+
+    
     '''Name Plate'''
         
     name_canvas = tk.Canvas(root,width = 800,height = 100,bg = 'white')
@@ -736,7 +1483,8 @@ treasure[{treasure}]'''
             if (entries2d[i][0].get() != '') or (entries2d[i][1].get() != '') or (entries2d[i][2].get() != ''):
                 temp_s += f'{entries2d[i][0].get()},{entries2d[i][1].get()},{entries2d[i][2].get()}|'
         temp_s = temp_s[0:len(temp_s)-1]
-
+        if len(weap_array) == 0:
+            temp_s = ',,|,,'
         weapons = temp_s
 
 
@@ -1021,18 +1769,7 @@ treasure[{treasure}]'''
 
     '''End of Personality'''
 
-    '''Spell Sheet'''
-    def open_spells():
-        print('Todo: Develop Spell Sheet')
-
-
-    spell_button = tk.Button(root,text = 'Spell Sheet',width = 14,height = 6,command = open_spells)
-    spell_button.place(relx = 0.9,rely = 0.075,anchor = tk.CENTER)
     
-    #Reference
-    #dice_button = tk.Button(root,text = 'Dice Board',width = 14,height = 6,command = dice_board)
-    #dice_button.place(relx = 0.1,rely = 0.075,anchor = tk.CENTER)
-    '''End of Spell Sheet'''
     
 
     '''Options'''
@@ -1523,4 +2260,7 @@ treasure[{treasure}]'''
 if __name__ == '__main__':
 
     print('Executing Main')
+    
+    #main('Jose-Santiano.txt')
+    main('Vedmid.txt')
     
